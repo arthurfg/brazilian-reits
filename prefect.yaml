@@ -7,27 +7,50 @@ name: prefect-cloud-run-poc
 prefect-version: 2.16.4
 
 # build section allows you to manage and build docker images
-build: null
+build:
+- prefect_docker.deployments.steps.build_docker_image:
+    id: build_image
+    requires: prefect-docker>=0.3.1
+    image_name: 
+      us-east1-docker.pkg.dev/arthur-data-engineering-course/my-repository/healthcheck-image
+    tag: latest
+    dockerfile: auto
 
 # push section allows you to manage if and how this project is uploaded to remote locations
-push: null
+push:
+- prefect_docker.deployments.steps.push_docker_image:
+    requires: prefect-docker>=0.3.1
+    image_name: '{{ build_image.image_name }}'
+    tag: '{{ build_image.tag }}'
 
 # pull section allows you to provide instructions for cloning this project in remote locations
 pull:
-- prefect.deployments.steps.git_clone:
-    repository: https://github.com/arthurfg/prefect-cloud-run-poc.git
-    branch: main
+- prefect.deployments.steps.set_working_directory:
+    directory: /opt/prefect/prefect-cloud-run-poc
 
 # the deployments section allows you to provide configuration for deploying flows
 deployments:
-- name: my-first-deployment
-  version: null
+- name: heathcheck-deploy
+  version:
   tags: []
-  description: null
-  entrypoint: hello_world.py:hello_world
+  description:
+  entrypoint: flows/healthcheck.py:healthcheck
   parameters: {}
   work_pool:
-    name: arthur
-    work_queue_name: null
-    job_variables: {}
+    name: cloud-run-wp
+    work_queue_name: default
+    job_variables:
+      image: '{{ build_image.image }}'
   schedules: []
+- name: heathcheck-deploy-copy
+  version:
+  tags: []
+  description:
+  entrypoint: flows/healthcheck_copy.py:healthcheck_copy
+  parameters: {}
+  work_pool:
+    name: cloud-run-wp
+    work_queue_name: default
+    job_variables:
+      image: '{{ build_image.image }}'
+  schedules: []  

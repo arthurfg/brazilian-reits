@@ -1,0 +1,35 @@
+name: Build an Image and Deploy a Prefect flow
+on: workflow_dispatch
+jobs:
+  deploy_flow:
+    permissions:
+      # required to obtain Google Cloud service account credentials
+      id-token: write
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: google-github-actions/auth@v1
+        with:
+          workload_identity_provider: projects/<project_id>/locations/global/workloadIdentityPools/<pool-name>/providers/<provider-name>
+          service_account: <gcp_service_account>@<project_id>.iam.gserviceaccount.com
+
+      - name: Configure Google Cloud credential helper
+        run: gcloud auth configure-docker --quiet us-east1-docker.pkg.dev
+
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Prefect Auth
+        uses: PrefectHQ/actions-prefect-auth@v1
+        with:
+          prefect-api-key: ${{ secrets.PREFECT_API_KEY }}
+          prefect-workspace: ${{ secrets.PREFECT_WORKSPACE }}
+
+      - name: Run Prefect Deploy
+        uses: PrefectHQ/actions-prefect-deploy@v3
+        with:
+          deployment-names: Docker
+          requirements-file-paths: ./examples/docker/requirements.txt
+          deployment-file-path: ./examples/docker/prefect.yaml

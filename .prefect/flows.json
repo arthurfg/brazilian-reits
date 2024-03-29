@@ -1,0 +1,4 @@
+{
+  "healthcheck": "flows/healthcheck.py:healthcheck",
+  "healthcheck-copy": "flows/healthcheck_copy.py:healthcheck_copy"
+}
