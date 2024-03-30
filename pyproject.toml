@@ -9,7 +9,6 @@ readme = "README.md"
 python = "^3.10"
 prefect = "^2.16.4"
 prefect-gcp = "^0.5.7"
-httpx = "^0.27.0"
 gcsfs = "^2024.3.1"
 
 

@@ -1,8 +1,5 @@
 name: Build an Image and Deploy a Prefect flow
-on:
-  push:
-    branches:
-      - main
+on: workflow_dispach
 jobs:
   deploy_flow:
     runs-on: ubuntu-latest
@@ -31,6 +28,6 @@ jobs:
       - name: Run Prefect Deploy
         uses: PrefectHQ/actions-prefect-deploy@v3
         with:
-          all-deployments: true
-          pyproject-toml-path: ./pyproject.toml
+          all-deployments: "true"
+          requirements-file-paths: ./flows/flow-1/requirements.txt, ./flows/flow-2/requirements.txt
           deployment-file-path: ./prefect.yaml

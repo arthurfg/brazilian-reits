@@ -34,7 +34,7 @@ deployments:
   version:
   tags: []
   description:
-  entrypoint: flows/healthcheck.py:healthcheck
+  entrypoint: flows/flow-1/healthcheck.py:healthcheck
   parameters: {}
   work_pool:
     name: cloud-run-wp
@@ -46,7 +46,7 @@ deployments:
   version:
   tags: []
   description:
-  entrypoint: flows/healthcheck_copy.py:healthcheck_copy
+  entrypoint: flows/flow-2/healthcheck_copy.py:healthcheck_copy
   parameters: {}
   work_pool:
     name: cloud-run-wp

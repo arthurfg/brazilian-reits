@@ -1,4 +1,4 @@
 {
-  "healthcheck": "flows/healthcheck.py:healthcheck",
-  "healthcheck-copy": "flows/healthcheck_copy.py:healthcheck_copy"
+  "healthcheck": "flows/flow-1/healthcheck.py:healthcheck",
+  "healthcheck-copy": "flows/flow-2/healthcheck_copy.py:healthcheck_copy"
 }
