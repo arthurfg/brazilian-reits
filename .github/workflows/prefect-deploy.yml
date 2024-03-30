@@ -1,25 +1,26 @@
 name: Build an Image and Deploy a Prefect flow
-on: workflow_dispatch
+on:
+  push:
+    branches:
+      - main
 jobs:
   deploy_flow:
-    permissions:
-      # required to obtain Google Cloud service account credentials
-      id-token: write
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout Repo
+        uses: actions/checkout@v3
 
-      - uses: google-github-actions/auth@v1
-        with:
-          workload_identity_provider: projects/<project_id>/locations/global/workloadIdentityPools/<pool-name>/providers/<provider-name>
-          service_account: <gcp_service_account>@<project_id>.iam.gserviceaccount.com
-
-      - name: Configure Google Cloud credential helper
-        run: gcloud auth configure-docker --quiet us-east1-docker.pkg.dev
-
-      - uses: actions/setup-python@v4
+      - name: Setup Python
+        uses: actions/setup-python@v4
         with:
           python-version: '3.10'
+
+      - name: Login to GAR
+        uses: docker/login-action@v3
+        with:
+          registry: us-east1-docker.pkg.dev
+          username: _json_key
+          password: ${{ secrets.GAR_JSON_KEY }}
 
       - name: Prefect Auth
         uses: PrefectHQ/actions-prefect-auth@v1
@@ -30,6 +31,6 @@ jobs:
       - name: Run Prefect Deploy
         uses: PrefectHQ/actions-prefect-deploy@v3
         with:
-          deployment-names: Docker
-          requirements-file-paths: ./examples/docker/requirements.txt
-          deployment-file-path: ./examples/docker/prefect.yaml
+          all-deployments: true
+          pyproject-toml-path: ./pyproject.toml
+          deployment-file-path: ./prefect.yaml
