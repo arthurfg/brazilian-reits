@@ -1,5 +1,5 @@
 name: Build an Image and Deploy a Prefect flow
-on: workflow_dispach
+on: workflow_dispatch
 jobs:
   deploy_flow:
     runs-on: ubuntu-latest
