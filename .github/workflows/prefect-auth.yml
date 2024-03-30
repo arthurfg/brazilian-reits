@@ -4,23 +4,23 @@ jobs:
   prefect_auth:
     runs-on: ubuntu-latest
     steps:
-      # - name: Checkout Repo
-      #   uses: actions/checkout@v3
+      - name: Checkout Repo
+        uses: actions/checkout@v3
 
-      # - name: Setup Python
-      #   uses: actions/setup-python@v4
-      #   with:
-      #     python-version: '3.10'
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
       
-      # - name: Prefect Auth
-      #   uses: PrefectHQ/actions-prefect-auth@v1
-      #   with:
-      #     prefect-api-key: ${{ secrets.PREFECT_API_KEY }}
-      #     prefect-workspace: ${{ secrets.PREFECT_WORKSPACE }}
+      - name: Prefect Auth
+        uses: PrefectHQ/actions-prefect-auth@v1
+        with:
+          prefect-api-key: ${{ secrets.PREFECT_API_KEY }}
+          prefect-workspace: ${{ secrets.PREFECT_WORKSPACE }}
       
       - name: Login to GAR
         uses: docker/login-action@v3
         with:
-          registry: 'us-east1-docker.pkg.dev'
-          username: '_json_key'
+          registry: us-east1-docker.pkg.dev
+          username: _json_key
           password: ${{ secrets.GAR_JSON_KEY }}
