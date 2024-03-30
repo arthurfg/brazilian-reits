@@ -4,8 +4,8 @@ jobs:
   prefect_auth:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: checkout@v3
+      - name: Checkout Repo
+        uses: actions/checkout@v3
 
       - name: Setup Python
         uses: actions/setup-python@v4
