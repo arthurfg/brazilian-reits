@@ -1,7 +1,7 @@
 name: Log Into Prefect Cloud
 on: workflow_dispatch
 jobs:
-  deploy_flow:
+  prefect_auth:
     runs-on: ubuntu-latest
     steps:
       - uses: checkout@v3
