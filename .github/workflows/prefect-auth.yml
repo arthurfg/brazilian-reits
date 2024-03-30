@@ -1,0 +1,17 @@
+name: Log Into Prefect Cloud
+on: workflow_dispatch
+jobs:
+  deploy_flow:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: checkout@v3
+
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      
+      - name: Prefect Auth
+        uses: PrefectHQ/actions-prefect-auth@v1
+        with:
+          prefect-api-key: ${{ secrets.PREFECT_API_KEY }}
+          prefect-workspace: ${{ secrets.PREFECT_WORKSPACE }}
