@@ -42,11 +42,11 @@ deployments:
     job_variables:
       image: '{{ build_image.image }}'
   schedules: []
-- name: heathcheck-deploy-copy
+- name: trigger-dbt-deploy
   version:
   tags: []
   description:
-  entrypoint: flows/flow-2/healthcheck_copy.py:healthcheck_copy
+  entrypoint: flows/trigger-dbt/trigger_dbt_flow.py:trigger_dbt_flow
   parameters: {}
   work_pool:
     name: cloud-run-wp

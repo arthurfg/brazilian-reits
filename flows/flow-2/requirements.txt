@@ -1,3 +1,0 @@
-prefect == 2.16.4
-prefect-gcp == 0.5.7
-gcsfs == 2024.3.1

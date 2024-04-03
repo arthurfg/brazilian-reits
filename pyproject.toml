@@ -4,12 +4,16 @@ version = "0.1.0"
 description = ""
 authors = ["Arthur Gusmão <arthurgusmao@id.uff.br>"]
 readme = "README.md"
+package-mode = false
+
 
 [tool.poetry.dependencies]
 python = "^3.10"
-prefect = "^2.16.4"
-prefect-gcp = "^0.5.7"
 gcsfs = "^2024.3.1"
+prefect = "^2.16.8"
+prefect-gcp = "^0.5.7"
+dbt-bigquery = "^1.7.7"
+prefect-dbt = "^0.4.1"
 
 
 [build-system]
