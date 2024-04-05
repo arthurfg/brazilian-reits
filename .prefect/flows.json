@@ -1,4 +1,5 @@
 {
   "healthcheck": "flows/flow-1/healthcheck.py:healthcheck",
-  "healthcheck-copy": "flows/flow-2/healthcheck_copy.py:healthcheck_copy"
+  "healthcheck-copy": "flows/flow-2/healthcheck_copy.py:healthcheck_copy",
+  "trigger-dbt-flow": "flows/trigger-dbt/trigger_dbt_flow.py:trigger_dbt_flow"
 }

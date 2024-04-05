@@ -14,7 +14,7 @@ build:
     image_name: 
       us-east1-docker.pkg.dev/arthur-data-engineering-course/my-repository/healthcheck-image
     tag: latest
-    dockerfile: Dockerfile
+    dockerfile: auto
 
 # push section allows you to manage if and how this project is uploaded to remote locations
 push:
