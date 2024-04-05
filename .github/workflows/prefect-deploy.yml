@@ -28,6 +28,6 @@ jobs:
       - name: Run Prefect Deploy
         uses: PrefectHQ/actions-prefect-deploy@v3
         with:
-          deployment-names: heathcheck-deploy
-          requirements-file-paths: ./flows/flow-1/requirements.txt
+          deployment-names: trigger-dbt-deploy
+          requirements-file-paths: ./flows/trigger-dbt/requirements.txt
           deployment-file-path: ./prefect.yaml
