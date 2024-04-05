@@ -5,8 +5,8 @@ from prefect import flow
 def trigger_dbt_flow() -> str:
     result = DbtCoreOperation(
         commands=["dbt run"],
-        project_dir="/Users/apple/prefect-cloud-run-poc/queries",
-        profiles_dir="/Users/apple/prefect-cloud-run-poc/queries"
+        project_dir="/opt/prefect/prefect-cloud-run-poc/queries",
+        profiles_dir="/opt/prefect/prefect-cloud-run-poc/queries"
     ).run()
     return result
 
