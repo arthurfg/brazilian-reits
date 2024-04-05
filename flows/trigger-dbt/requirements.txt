@@ -1,4 +1,5 @@
-gcsfs ==2024.3.1
+gcsfs==2024.3.1
 prefect==2.16.8
 prefect-gcp==0.5.7
+prefect-dbt[cli]
 prefect-dbt[bigquery]
