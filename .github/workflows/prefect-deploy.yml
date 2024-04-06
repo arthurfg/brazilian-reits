@@ -29,5 +29,5 @@ jobs:
         uses: PrefectHQ/actions-prefect-deploy@v3
         with:
           deployment-names: trigger-dbt-deploy
-          requirements-file-paths: ./flows/trigger-dbt/requirements.txt
-          deployment-file-path: ./prefect.yaml
+          pyproject-toml-path: './pyproject.toml'
+          deployment-file-path: './prefect.yaml'
