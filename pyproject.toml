@@ -6,6 +6,7 @@ authors = ["Arthur Gusmão <arthurgusmao@id.uff.br>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
+python = "^3.10"
 gcsfs = "^2024.3.1"
 prefect = "^2.16.8"
 prefect-gcp = "^0.5.7"
