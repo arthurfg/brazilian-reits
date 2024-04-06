@@ -4,7 +4,7 @@ queries:
       dataset: trips_data_all
       job_execution_timeout_seconds: 300
       job_retries: 1
-      keyfile: /Users/apple/.creds/dbt-user-creds.json
+      keyfile: ./dbt-service-account.json
       location: US
       method: service-account
       priority: interactive
