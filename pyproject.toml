@@ -11,7 +11,7 @@ gcsfs = "^2024.3.1"
 prefect = "^2.16.8"
 prefect-gcp = "^0.5.7"
 dbt-bigquery = "^1.7.7"
-prefect-dbt = {extras = ["bigquery"], version = "^0.4.1"}
+prefect-dbt = {extras = ["cli", "bigquery"], version = "^0.4.1"}
 
 [build-system]
 requires = ["poetry-core"]
