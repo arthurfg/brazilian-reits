@@ -43,9 +43,8 @@ jobs:
         if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
         run: poetry install --no-interaction --no-root
 
-      - name: Activate Poetry environment
-        run: |
-          poetry shell          
+      - name: Install library
+        run: poetry install --no-interaction
 
       - name: Deploy with Prefect
         run: |
