@@ -160,7 +160,7 @@ def make_partitions(path: str):
     for i in ['geral', 'complemento', 'ativo_passivo']: os.makedirs(f"/tmp/data/br_cvm_fii/{i}", exist_ok=True) 
     ROOT_DIR = "/tmp/data/br_cvm_fii/"
     for file in files:
-        df = pd.read_csv(f'{ROOT_DIR}/raw/input/{file}', sep=";", encoding="ISO-8859-1",)
+        df = pd.read_csv(f'{ROOT_DIR}/raw/input/{file}', sep=";", encoding="ISO-8859-1", dtype="string")
         partition_name = None
         if "_geral_" in file:
             partition_name = "geral"
@@ -211,7 +211,7 @@ def upload_directory_with_transfer_manager(bucket_name, source_directory, worker
 
     relative_paths = [path.relative_to(source_directory) for path in file_paths]
     string_paths = [str(path) for path in relative_paths]
-
+    
     logger.info("Found {} files.".format(len(string_paths)))
     results = transfer_manager.upload_many_from_filenames(
         bucket, string_paths, source_directory=source_directory, max_workers=workers, skip_if_exists=True
