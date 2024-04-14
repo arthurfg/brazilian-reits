@@ -12,6 +12,8 @@ prefect = "^2.16.8"
 prefect-gcp = "^0.5.7"
 dbt-bigquery = "^1.7.7"
 prefect-dbt = {extras = ["bigquery"], version = "^0.4.1"}
+beautifulsoup4 = "^4.12.3"
+tqdm = "^4.66.2"
 
 [build-system]
 requires = ["poetry-core"]

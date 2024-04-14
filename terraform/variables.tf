@@ -15,7 +15,7 @@ variable "location" {
 
 variable "bq_dataset_name" {
   description = "My bq dataset name"
-  default     = "course_dataset"
+  default     = "brazilian_reits"
 }
 
 variable "gcs_storage_class" {
@@ -25,5 +25,5 @@ variable "gcs_storage_class" {
 
 variable "gcs_bucket_name" {
   description = "My storage bucket name"
-  default     = "arthur-data-engineering-course-terra-bucket"
+  default     = "brazilian-reits-bucket"
 }
