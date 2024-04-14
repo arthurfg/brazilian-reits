@@ -1,4 +1,4 @@
-# Real Estate Investment Funds Data Pipeline
+# Brazilian Real Estate Investment Funds (REIT's) Data Pipeline
 
 This project establishes an end-to-end data pipeline utilizing Prefect, Google Cloud Storage (GCS), Google Cloud Run, BigQuery, and dbt. The pipeline extracts data from the Brazilian Securities and Exchange Commission (CVM) regarding Real Estate Investment Funds (REITs) in Brazil.
 
