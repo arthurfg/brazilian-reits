@@ -1,4 +1,4 @@
-{{ config(materialized='table') }}
+{{ config(materialized='table', schema= 'brazilian_reits') }}
 
 SELECT
   SAFE_CAST(Data_Referencia AS DATE) AS data_referencia,

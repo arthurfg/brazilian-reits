@@ -29,7 +29,7 @@ pull:
     id: clone-step
     directory: /opt/prefect/prefect-cloud-run-poc
 - prefect.deployments.steps.pip_install_requirements:
-    directory: flows/trigger-dbt/  # `clone-step` is a user-provided `id` field
+    directory: flows/brazilian_reits/  # `clone-step` is a user-provided `id` field
     requirements_file: requirements.txt    
 
 # the deployments section allows you to provide configuration for deploying flows
@@ -58,3 +58,15 @@ deployments:
     job_variables:
       image: '{{ build_image.image }}'
   schedules: []  
+- name: brazilian-reits-deploy
+  version:
+  tags: []
+  description:
+  entrypoint: flows/brazilian_reits/brazilian_reits.py:brazilian_reits
+  parameters: {}
+  work_pool:
+    name: cloud-run-wp
+    work_queue_name: default
+    job_variables:
+      image: '{{ build_image.image }}'
+  schedules: [] 

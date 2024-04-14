@@ -196,15 +196,16 @@ def create_staging_tables():
 
 @task
 def run_dbt_model():
+    logger = get_run_logger()
+    logger.info("Triggering dbt models:")
     result = DbtCoreOperation(
         commands=["dbt run"],
         project_dir="/opt/prefect/prefect-cloud-run-poc/queries",
         profiles_dir="/opt/prefect/prefect-cloud-run-poc/queries"
     ).run()
-    return result
 
 @flow()
-def test():
+def brazilian_reits():
     logger = get_run_logger()
     links_and_dates = extract_links_and_dates(url= "https://dados.cvm.gov.br/dados/FII/DOC/INF_MENSAL/DADOS/")
     files = check_for_updates(df = links_and_dates)
@@ -214,9 +215,8 @@ def test():
     else:
         path = download_unzip_csv(files = files)
         make_partitions(path = path)
-        make_parquet_schema()
-        #upload_directory_with_transfer_manager(bucket_name="brazilian-reits-bucket", source_directory="/tmp/data/")
-        #create_staging_tables()
-
+        upload_directory_with_transfer_manager(bucket_name="brazilian-reits-bucket", source_directory="/tmp/data/")
+        create_staging_tables()
+        run_dbt_model()
 if __name__ == "__main__":
-    test()
+    brazilian_reits()

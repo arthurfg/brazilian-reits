@@ -21,3 +21,4 @@ models:
   queries:
     brazilian_reits:
       +materialized: table
+      +schema: brazilian_reits

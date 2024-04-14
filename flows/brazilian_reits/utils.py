@@ -1,5 +1,4 @@
-
-
+import os
 def create_bigquery_table(table_id, overwrite=True) -> None:
     """
     Creates a BigQuery table with external Parquet data source.
@@ -9,6 +8,7 @@ def create_bigquery_table(table_id, overwrite=True) -> None:
     overwrite (bool, optional): If True, the existing table with the same `table_id` will be overwritten.
                                 If False and the table already exists, the function does nothing. Default is True.
     """    
+    os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "./dbt-service-account.json"
     from google.cloud import bigquery
     source_uris = [
         f"gs://brazilian-reits-bucket/br_cvm_fii/{table_id}/*"

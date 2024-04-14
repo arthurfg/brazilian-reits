@@ -1,5 +1,4 @@
-{{ config(materialized='table') }}
-
+{{ config(materialized='table', schema= 'brazilian_reits') }}
 SELECT
   SAFE_CAST(Data_Referencia AS DATE) AS data_referencia,
   SAFE_CAST(regexp_replace(CNPJ_Fundo, r'[^0-9]', '') AS STRING) AS cnpj_fundo,

@@ -1,7 +1,9 @@
+
 version: 2
 
 models:
   - name: geral
+    description: Geral
     columns:
       - name: data_referencia
         description: CNPJ do fundo
@@ -78,6 +80,7 @@ models:
       - name: email
         description: Endereço de e-mail
   - name: complemento
+    description: Complemento
     columns:
       - name: data_referencia
         description: Data de referência do documento
@@ -142,110 +145,111 @@ models:
       - name: percentual_amortizacao_cotas_mes
         description: Percentual de amortização de cotas mensal
   - name: ativo_passivo
+    description: Ativos e Passivos
     columns:
       - name: data_referencia
-        description: Data de referência do documento
+        description: "Data de referência"
       - name: cnpj_fundo
-        description: CNPJ do fundo
+        description: "CNPJ do fundo"
       - name: cnpj_basico
-        description: CNPJ básico do fundo
+        description: "CNPJ básico"
       - name: versao
-        description: Versão do documento
+        description: "Versão"
       - name: total_necessidades_liquidez
-        description: Total de necessidades de liquidez
+        description: "Total de necessidades de liquidez"
       - name: disponibilidades
-        description: Disponibilidades
+        description: "Disponibilidades"
       - name: titulos_publicos
-        description: Títulos públicos
+        description: "Títulos públicos"
       - name: titulos_privados
-        description: Títulos privados
+        description: "Títulos privados"
       - name: fundos_renda_fixa
-        description: Fundos de renda fixa
+        description: "Fundos de renda fixa"
       - name: total_investido
-        description: Total investido
+        description: "Total investido"
       - name: direitos_bens_imoveis
-        description: Direitos sobre bens imóveis
+        description: "Direitos sobre bens imóveis"
       - name: terrenos
-        description: Terrenos
+        description: "Terrenos"
       - name: imoveis_renda_acabados
-        description: Imóveis de renda acabados
+        description: "Imóveis de renda acabados"
       - name: imoveis_renda_construcao
-        description: Imóveis de renda em construção
+        description: "Imóveis de renda em construção"
       - name: imoveis_venda_acabados
-        description: Imóveis para venda acabados
+        description: "Imóveis para venda acabados"
       - name: imoveis_venda_construcao
-        description: Imóveis para venda em construção
+        description: "Imóveis para venda em construção"
       - name: outros_direitos_reais
-        description: Outros direitos reais
+        description: "Outros direitos reais"
       - name: acoes
-        description: Ações
+        description: "Ações"
       - name: debentures
-        description: Debêntures
+        description: "Debêntures"
       - name: bonus_subscricao
-        description: Bônus de subscrição
+        description: "Bônus de subscrição"
       - name: certificados_deposito_valores_mobiliarios
-        description: Certificados de depósito de valores mobiliários
+        description: "Certificados de depósito de valores mobiliários"
       - name: cedulas_debentures
-        description: Cédulas de debêntures
+        description: "Cédulas de debêntures"
       - name: fundo_acoes
-        description: Fundo de ações
-      - name: fip
-        description: Fundo de investimento em participações
+        description: "Fundos de ações"
+      - name: fi
+        description: "FIP"
       - name: fii
-        description: Fundo de investimento imobiliário
+        description: "FII"
       - name: fdic
-        description: Fundo de investimento em direitos creditórios
+        description: "FDIC"
       - name: outras_cotas_fi
-        description: Outras cotas de fundos de investimento
+        description: "Outras cotas de fundos de investimento"
       - name: notas_promissorias
-        description: Notas promissórias
+        description: "Notas promissórias"
       - name: acoes_sociedades_atividades_fii
-        description: Ações de sociedades cujo único propósito se enquadra entre as atividades permitidas aos FII
+        description: "Ações de sociedades em atividades de FII"
       - name: cotas_sociedades_atividades_fii
-        description: Cotas de sociedades que se enquadram entre as atividades permitidas aos FII
+        description: "Cotas de sociedades em atividades de FII"
       - name: cepac
-        description: Certificados de potencial adicional de construção
+        description: "CEPAC"
       - name: cri
-        description: Certificado de recebíveis imobiliários
+        description: "CRI"
       - name: cri_cra
-        description: Certificado de recebíveis imobiliários ou agrícolas
+        description: "CRI/CRA"
       - name: letras_hipotecarias
-        description: Letras hipotecárias
+        description: "Letras hipotecárias"
       - name: lci
-        description: Letras de crédito imobiliário
+        description: "LCI"
       - name: lci_lca
-        description: Letras de crédito imobiliário ou do agronegócio
+        description: "LCI/LCA"
       - name: lig
-        description: Letra imobiliária garantida
-      - name: outros_valores_mobiliarios
-        description: Outros valores mobiliários
+        description: "LIG"
+      - name: outros_valores_mobliarios
+        description: "Outros valores mobiliários"
       - name: valores_receber
-        description: Valores a receber
+        description: "Valores a receber"
       - name: contas_receber_aluguel
-        description: Contas a receber de aluguel
+        description: "Contas a receber de aluguel"
       - name: contas_receber_venda_imoveis
-        description: Contas a receber de venda de imóveis
+        description: "Contas a receber de venda de imóveis"
       - name: outros_valores_receber
-        description: Outros valores a receber
+        description: "Outros valores a receber"
       - name: rendimentos_distribuir
-        description: Rendimentos a distribuir
+        description: "Rendimentos a distribuir"
       - name: taxa_administracao_pagar
-        description: Taxa de administração a pagar
+        description: "Taxa de administração a pagar"
       - name: taxa_performance_pagar
-        description: Taxa de performance a pagar
+        description: "Taxa de performance a pagar"
       - name: obrigacoes_aquisicao_imoveis
-        description: Obrigações para aquisição de imóveis
+        description: "Obrigações com aquisição de imóveis"
       - name: adiantamento_venda_imoveis
-        description: Adiantamento para venda de imóveis
+        description: "Adiantamento para venda de imóveis"
       - name: adiantamento_alugueis
-        description: Adiantamento de aluguéis
+        description: "Adiantamento de aluguéis"
       - name: obrigacoes_securitizacao_recebiveis
-        description: Obrigações de securitização de recebíveis
+        description: "Obrigações com securitização de recebíveis"
       - name: instrumentos_financeiros_derivativos
-        description: Instrumentos financeiros derivativos
+        description: "Instrumentos financeiros derivativos"
       - name: provisoes_contigencias
-        description: Provisões para contingências
+        description: "Provisões para contingências"
       - name: outros_valores_pagar
-        description: Outros valores a pagar
+        description: "Outros valores a pagar"
       - name: total_passivo
-        description: Total do passivo        
+        description: "Total do passivo"
