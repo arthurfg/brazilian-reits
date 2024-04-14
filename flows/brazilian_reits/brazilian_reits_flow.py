@@ -194,9 +194,9 @@ def test():
     if len(files) == 0:
         logger.info("Não houveram atualizações, encerrando o flow")
     else:
-        #path = download_unzip_csv(files = files)
-        #make_partitions(path = path)
-        #upload_directory_with_transfer_manager(bucket_name="brazilian-reits-bucket", source_directory="/tmp/data/")
+        path = download_unzip_csv(files = files)
+        make_partitions(path = path)
+        upload_directory_with_transfer_manager(bucket_name="brazilian-reits-bucket", source_directory="/tmp/data/")
         create_staging_tables()
 
 if __name__ == "__main__":
