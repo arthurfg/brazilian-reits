@@ -11,6 +11,7 @@ import pyarrow as pa
 import pyarrow.parquet as pq
 import warnings
 from utils import create_bigquery_table
+from prefect_dbt.cli.commands import DbtCoreOperation
 
 
 @task
@@ -124,7 +125,7 @@ def make_partitions(path: str):
     for i in ['geral', 'complemento', 'ativo_passivo']: os.makedirs(f"/tmp/data/br_cvm_fii/{i}", exist_ok=True) 
     ROOT_DIR = "/tmp/data/br_cvm_fii/"
     for file in files:
-        df = pd.read_csv(f'{ROOT_DIR}/raw/input/{file}', sep=";", encoding="ISO-8859-1", dtype="string")
+        df = pd.read_csv(f'{ROOT_DIR}/raw/input/{file}', sep=";", encoding="ISO-8859-1",)
         partition_name = None
         if "_geral_" in file:
             partition_name = "geral"
@@ -139,7 +140,16 @@ def make_partitions(path: str):
                 root_path=f'{ROOT_DIR}{partition_name}',
                 partition_cols=["Data_Referencia"],
                 basename_template="{i}_data.parquet"
-            )          
+            )   
+
+@task
+def make_parquet_schema():
+    for t in ['geral','complemento', 'ativo_passivo']:
+        table = pq.read_table(f'/tmp/data/br_cvm_fii/{t}/Data_Referencia=2019-12-01/0_data.parquet')
+        schema = table.schema
+        schema_df = pd.DataFrame({'column_name': schema.names, 'data_type': [str(dtype) for dtype in schema.types]})
+        schema_df.to_csv(f'/tmp/data/br_cvm_fii/schema_{t}.csv', index=False)
+
 @task
 def upload_directory_with_transfer_manager(bucket_name, source_directory, workers=8):
     """Upload every file in a directory, including all files in subdirectories.
@@ -184,6 +194,14 @@ def create_staging_tables():
         create_bigquery_table(table_id=table)
         logger.info(f"Tabela {table} criada!")
 
+@task
+def run_dbt_model():
+    result = DbtCoreOperation(
+        commands=["dbt run"],
+        project_dir="/opt/prefect/prefect-cloud-run-poc/queries",
+        profiles_dir="/opt/prefect/prefect-cloud-run-poc/queries"
+    ).run()
+    return result
 
 @flow()
 def test():
@@ -196,8 +214,9 @@ def test():
     else:
         path = download_unzip_csv(files = files)
         make_partitions(path = path)
-        upload_directory_with_transfer_manager(bucket_name="brazilian-reits-bucket", source_directory="/tmp/data/")
-        create_staging_tables()
+        make_parquet_schema()
+        #upload_directory_with_transfer_manager(bucket_name="brazilian-reits-bucket", source_directory="/tmp/data/")
+        #create_staging_tables()
 
 if __name__ == "__main__":
     test()

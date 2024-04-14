@@ -1,0 +1,251 @@
+version: 2
+
+models:
+  - name: geral
+    columns:
+      - name: data_referencia
+        description: CNPJ do fundo
+      - name: cnpj_fundo
+        description: CNPJ do fundo            
+      - name: cnpj_basico
+        description: CNPJ do fundo
+      - name: versao
+        description: Versão do documento
+      - name: data_entrega
+        description: Data de entrega/recebimento do documento
+      - name: nome_fundo
+        description: Nome do fundo
+      - name: data_funcionamento
+        description: Data de funcionamento
+      - name: publico_alvo
+        description: Público-alvo
+      - name: codigo_isin
+        description: Código ISIN
+      - name: quantidade_cotas_emitidas
+        description: Quantidade de cotas emitidas
+      - name: fundo_exclusivo
+        description: Indica se é fundo exclusivo
+      - name: cotistas_vinculo_familiar
+        description: Indica se os cotistas possuem vínculo familiar ou societário familiar
+      - name: mandato
+        description: Mandato
+      - name: segmento_atuacao
+        description: Segmento de atuação
+      - name: tipo_gestao
+        description: Tipo de gestão
+      - name: prazo_duracao
+        description: Prazo de duração
+      - name: data_prazo_duracao
+        description: Data do prazo de duração
+      - name: encerramento_exercicio_social
+        description: Encerramento do exercício social
+      - name: mercado_negociacao_bolsa
+        description: Indica se o mercado de negociação das cotas é Bolsa
+      - name: mercado_negociacao_mbo
+        description: Indica se o mercado de negociação das cotas é MBO
+      - name: mercado_negociacao_mb
+        description: Indica se o mercado de negociação das cotas é MB
+      - name: entidade_administradora_bvmf
+        description: Indica se a entidade administradora de mercado organizado é BVMF
+      - name: entidade_administradora_cetip
+        description: Indica se a entidade administradora de mercado organizado é CETIP
+      - name: nome_administrador
+        description: Nome do administrador
+      - name: cnpj_administrador
+        description: CNPJ do administrador
+      - name: logradouro
+        description: Logradouro
+      - name: numero
+        description: Número
+      - name: complemento
+        description: Complemento
+      - name: bairro
+        description: Bairro
+      - name: cidade
+        description: Cidade
+      - name: estado
+        description: Estado
+      - name: cep
+        description: CEP
+      - name: telefone1
+        description: Telefone 1
+      - name: telefone2
+        description: Telefone 2
+      - name: telefone3
+        description: Telefone 3
+      - name: site
+        description: Site
+      - name: email
+        description: Endereço de e-mail
+  - name: complemento
+    columns:
+      - name: data_referencia
+        description: Data de referência do documento
+      - name: cnpj_fundo
+        description: CNPJ do fundo
+      - name: cnpj_basico
+        description: CNPJ básico do fundo
+      - name: versao
+        description: Versão do documento
+      - name: data_informacao_numero_cotistas
+        description: Data da informação sobre o detalhamento do número de cotistas
+      - name: total_numero_cotistas
+        description: Total do número de cotistas
+      - name: numero_cotistas_pessoa_fisica
+        description: Número de cotistas pessoa física
+      - name: numero_cotistas_pessoa_juridica_nao_financeira
+        description: Número de cotistas pessoa jurídica não financeira
+      - name: numero_cotistas_banco_comercial
+        description: Número de cotistas banco comercial
+      - name: numero_cotistas_corretora_distribuidora
+        description: Número de cotistas corretora distribuidora
+      - name: numero_cotistas_outras_pessoas_juridicas_financeira
+        description: Número de cotistas outras pessoas jurídicas financeira
+      - name: numero_cotistas_investidores_nao_residentes
+        description: Número de cotistas investidores não residentes
+      - name: numero_cotistas_entidade_aberta_previdencia_complementar
+        description: Número de cotistas entidade aberta previdência complementar
+      - name: numero_cotistas_entidade_fechada_previdência_complementar
+        description: Número de cotistas entidade fechada previdência complementar
+      - name: numero_cotistas_regime_proprio_previdencia_servidores_publicos
+        description: Número de cotistas regime próprio previdência servidores públicos
+      - name: numero_cotistas_sociedade_seguradora_resseguradora
+        description: Número de cotistas sociedade seguradora resseguradora
+      - name: numero_cotistas_sociedade_capitalizacao_arrendamento_mercantil
+        description: Número de cotistas sociedade capitalização arrendamento mercantil
+      - name: numero_cotistas_fii
+        description: Número de cotistas FII
+      - name: numero_cotistas_outros_fundos
+        description: Número de cotistas outros fundos
+      - name: numero_cotistas_distribuidores_fundo
+        description: Número de cotistas distribuidores fundo
+      - name: numero_cotistas_outros_tipos
+        description: Número de cotistas outros tipos
+      - name: valor_ativo
+        description: Valor ativo
+      - name: patrimonio_liquido
+        description: Patrimônio líquido
+      - name: cotas_emitidas
+        description: Cotas emitidas
+      - name: valor_patrimonial_cotas
+        description: Valor patrimonial das cotas
+      - name: percentual_despesas_taxa_administracao
+        description: Percentual de despesas com taxa de administração
+      - name: percentual_despesas_agente_custodiante
+        description: Percentual de despesas com agente custodiante
+      - name: percentual_rentabilidade_efetiva_mes
+        description: Percentual de rentabilidade efetiva mensal
+      - name: percentual_rentabilidade_patrimonial_mes
+        description: Percentual de rentabilidade patrimonial mensal
+      - name: percentual_dividend_yield_mes
+        description: Percentual de dividend yield mensal
+      - name: percentual_amortizacao_cotas_mes
+        description: Percentual de amortização de cotas mensal
+  - name: ativo_passivo
+    columns:
+      - name: data_referencia
+        description: Data de referência do documento
+      - name: cnpj_fundo
+        description: CNPJ do fundo
+      - name: cnpj_basico
+        description: CNPJ básico do fundo
+      - name: versao
+        description: Versão do documento
+      - name: total_necessidades_liquidez
+        description: Total de necessidades de liquidez
+      - name: disponibilidades
+        description: Disponibilidades
+      - name: titulos_publicos
+        description: Títulos públicos
+      - name: titulos_privados
+        description: Títulos privados
+      - name: fundos_renda_fixa
+        description: Fundos de renda fixa
+      - name: total_investido
+        description: Total investido
+      - name: direitos_bens_imoveis
+        description: Direitos sobre bens imóveis
+      - name: terrenos
+        description: Terrenos
+      - name: imoveis_renda_acabados
+        description: Imóveis de renda acabados
+      - name: imoveis_renda_construcao
+        description: Imóveis de renda em construção
+      - name: imoveis_venda_acabados
+        description: Imóveis para venda acabados
+      - name: imoveis_venda_construcao
+        description: Imóveis para venda em construção
+      - name: outros_direitos_reais
+        description: Outros direitos reais
+      - name: acoes
+        description: Ações
+      - name: debentures
+        description: Debêntures
+      - name: bonus_subscricao
+        description: Bônus de subscrição
+      - name: certificados_deposito_valores_mobiliarios
+        description: Certificados de depósito de valores mobiliários
+      - name: cedulas_debentures
+        description: Cédulas de debêntures
+      - name: fundo_acoes
+        description: Fundo de ações
+      - name: fip
+        description: Fundo de investimento em participações
+      - name: fii
+        description: Fundo de investimento imobiliário
+      - name: fdic
+        description: Fundo de investimento em direitos creditórios
+      - name: outras_cotas_fi
+        description: Outras cotas de fundos de investimento
+      - name: notas_promissorias
+        description: Notas promissórias
+      - name: acoes_sociedades_atividades_fii
+        description: Ações de sociedades cujo único propósito se enquadra entre as atividades permitidas aos FII
+      - name: cotas_sociedades_atividades_fii
+        description: Cotas de sociedades que se enquadram entre as atividades permitidas aos FII
+      - name: cepac
+        description: Certificados de potencial adicional de construção
+      - name: cri
+        description: Certificado de recebíveis imobiliários
+      - name: cri_cra
+        description: Certificado de recebíveis imobiliários ou agrícolas
+      - name: letras_hipotecarias
+        description: Letras hipotecárias
+      - name: lci
+        description: Letras de crédito imobiliário
+      - name: lci_lca
+        description: Letras de crédito imobiliário ou do agronegócio
+      - name: lig
+        description: Letra imobiliária garantida
+      - name: outros_valores_mobiliarios
+        description: Outros valores mobiliários
+      - name: valores_receber
+        description: Valores a receber
+      - name: contas_receber_aluguel
+        description: Contas a receber de aluguel
+      - name: contas_receber_venda_imoveis
+        description: Contas a receber de venda de imóveis
+      - name: outros_valores_receber
+        description: Outros valores a receber
+      - name: rendimentos_distribuir
+        description: Rendimentos a distribuir
+      - name: taxa_administracao_pagar
+        description: Taxa de administração a pagar
+      - name: taxa_performance_pagar
+        description: Taxa de performance a pagar
+      - name: obrigacoes_aquisicao_imoveis
+        description: Obrigações para aquisição de imóveis
+      - name: adiantamento_venda_imoveis
+        description: Adiantamento para venda de imóveis
+      - name: adiantamento_alugueis
+        description: Adiantamento de aluguéis
+      - name: obrigacoes_securitizacao_recebiveis
+        description: Obrigações de securitização de recebíveis
+      - name: instrumentos_financeiros_derivativos
+        description: Instrumentos financeiros derivativos
+      - name: provisoes_contigencias
+        description: Provisões para contingências
+      - name: outros_valores_pagar
+        description: Outros valores a pagar
+      - name: total_passivo
+        description: Total do passivo        

@@ -1,0 +1,36 @@
+{{ config(materialized='table') }}
+
+SELECT
+  SAFE_CAST(Data_Referencia AS DATE) AS data_referencia,
+  SAFE_CAST(regexp_replace(CNPJ_Fundo, r'[^0-9]', '') AS STRING) AS cnpj_fundo,
+  SAFE_CAST(substr(regexp_replace(CNPJ_Fundo, r'[^0-9]', ''), 1, 8) AS STRING) AS cnpj_basico,
+  SAFE_CAST(Versao AS INT64) AS versao,
+  SAFE_CAST(Data_Informacao_Numero_Cotistas AS STRING) AS data_informacao_numero_cotistas,
+  SAFE_CAST(Total_Numero_Cotistas AS FLOAT64) AS total_numero_cotistas,
+  SAFE_CAST(Numero_Cotistas_Pessoa_Fisica AS FLOAT64) AS numero_cotistas_pessoa_fisica,
+  SAFE_CAST(Numero_Cotistas_Pessoa_Juridica_Nao_Financeira AS FLOAT64) AS numero_cotistas_pessoa_juridica_nao_financeira,
+  SAFE_CAST(Numero_Cotistas_Banco_Comercial AS FLOAT64) AS numero_cotistas_banco_comercial,
+  SAFE_CAST(Numero_Cotistas_Corretora_Distribuidora AS FLOAT64) AS numero_cotistas_corretora_distribuidora,
+  SAFE_CAST(Numero_Cotistas_Outras_Pessoas_Juridicas_Financeira AS FLOAT64) AS numero_cotistas_outras_pessoas_juridicas_financeira,
+  SAFE_CAST(Numero_Cotistas_Investidores_Nao_Residentes AS FLOAT64) AS numero_cotistas_investidores_nao_residentes,
+  SAFE_CAST(Numero_Cotistas_Entidade_Aberta_Previdencia_Complementar AS FLOAT64) AS numero_cotistas_entidade_aberta_previdencia_complementar,
+  SAFE_CAST(Numero_Cotistas_Entidade_Fechada_Previd_ncia_Complementar AS FLOAT64) AS numero_cotistas_entidade_fechada_previdencia_complementar,
+  SAFE_CAST(Numero_Cotistas_Regime_Proprio_Previdencia_Servidores_Publicos AS FLOAT64) AS numero_cotistas_regime_proprio_previdencia_servidores_publicos,
+  SAFE_CAST(Numero_Cotistas_Sociedade_Seguradora_Resseguradora AS FLOAT64) AS numero_cotistas_sociedade_seguradora_resseguradora,
+  SAFE_CAST(Numero_Cotistas_Sociedade_Capitalizacao_Arrendamento_Mercantil AS FLOAT64) AS numero_cotistas_sociedade_capitalizacao_arrendamento_mercantil,
+  SAFE_CAST(Numero_Cotistas_FII AS FLOAT64) AS numero_cotistas_fii,
+  SAFE_CAST(Numero_Cotistas_Outros_Fundos AS FLOAT64) AS numero_cotistas_outros_fundos,
+  SAFE_CAST(Numero_Cotistas_Distribuidores_Fundo AS FLOAT64) AS numero_cotistas_distribuidores_fundo,
+  SAFE_CAST(Numero_Cotistas_Outros_Tipos AS FLOAT64) AS numero_cotistas_outros_tipos,
+  SAFE_CAST(Valor_Ativo AS FLOAT64) AS valor_ativo,
+  SAFE_CAST(Patrimonio_Liquido AS FLOAT64) AS patrimonio_liquido,
+  SAFE_CAST(Cotas_Emitidas AS FLOAT64) AS cotas_emitidas,
+  SAFE_CAST(Valor_Patrimonial_Cotas AS FLOAT64) AS valor_patrimonial_cotas,
+  SAFE_CAST(Percentual_Despesas_Taxa_Administracao AS FLOAT64) AS percentual_despesas_taxa_administracao,
+  SAFE_CAST(Percentual_Despesas_Agente_Custodiante AS FLOAT64) AS percentual_despesas_agente_custodiante,
+  SAFE_CAST(Percentual_Rentabilidade_Efetiva_Mes AS FLOAT64) AS percentual_rentabilidade_efetiva_mes,
+  SAFE_CAST(Percentual_Rentabilidade_Patrimonial_Mes AS FLOAT64) AS percentual_rentabilidade_patrimonial_mes,
+  SAFE_CAST(Percentual_Dividend_Yield_Mes AS FLOAT64) AS percentual_dividend_yield_mes,
+  SAFE_CAST(Percentual_Amortizacao_Cotas_Mes AS FLOAT64) AS percentual_amortizacao_cotas_mes
+FROM
+   `arthur-data-engineering-course.brazilian_reits_staging.complemento_staging`
