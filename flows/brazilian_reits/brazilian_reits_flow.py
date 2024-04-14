@@ -9,6 +9,9 @@ import os
 import zipfile
 import pyarrow as pa
 import pyarrow.parquet as pq
+import warnings
+from utils import create_bigquery_table
+
 
 @task
 def extract_links_and_dates(url) -> pd.DataFrame:
@@ -53,8 +56,6 @@ def check_for_updates(df):
     """
     Checks for outdated tables.
     """
-    logger = get_run_logger()
-    logger.info(df.head())
     
     return df.query("desatualizado == False").arquivo.to_list()       
 
@@ -111,29 +112,6 @@ def download_unzip_csv(
             os.system(
                 f'cd /tmp/data/br_cvm_fii/{id}/input; find . -type f ! -iname "*.csv" -delete'
             )
-
-    elif isinstance(files, str):
-        logger.info(f"Baixando o arquivo {files}")
-        download_url = f"{url}{files}"
-        save_path = f"/tmp/data/br_cvm_fii/{id}/input/{files}"
-
-        r = requests.get(download_url, headers=request_headers, stream=True, timeout=10)
-        with open(save_path, "wb") as fd:
-            for chunk in tqdm(r.iter_content(chunk_size=chunk_size)):
-                fd.write(chunk)
-
-        try:
-            with zipfile.ZipFile(save_path) as z:
-                z.extractall(f"/tmp/data/br_cvm_fi/{id}/input")
-            logger.info("Dados extraídos com sucesso!")
-
-        except zipfile.BadZipFile:
-            logger.info(f"O arquivo {files} não é um arquivo ZIP válido.")
-
-        os.system(
-            f'cd /tmp/data/br_cvm_fii/{id}/input; find . -type f ! -iname "*.csv" -delete'
-        )
-
     else:
         raise ValueError("O argumento 'files' possui um tipo inadequado.")
 
@@ -146,7 +124,7 @@ def make_partitions(path: str):
     for i in ['geral', 'complemento', 'ativo_passivo']: os.makedirs(f"/tmp/data/br_cvm_fii/{i}", exist_ok=True) 
     ROOT_DIR = "/tmp/data/br_cvm_fii/"
     for file in files:
-        df = pd.read_csv(f'{ROOT_DIR}/raw/input/{file}', sep=";", encoding="ISO-8859-1")
+        df = pd.read_csv(f'{ROOT_DIR}/raw/input/{file}', sep=";", encoding="ISO-8859-1", dtype="string")
         partition_name = None
         if "_geral_" in file:
             partition_name = "geral"
@@ -159,18 +137,67 @@ def make_partitions(path: str):
             pq.write_to_dataset(
                 table=pa.Table.from_pandas(df),
                 root_path=f'{ROOT_DIR}{partition_name}',
-                partition_cols=["Data_Referencia"]
+                partition_cols=["Data_Referencia"],
+                basename_template="{i}_data.parquet"
             )          
+@task
+def upload_directory_with_transfer_manager(bucket_name, source_directory, workers=8):
+    """Upload every file in a directory, including all files in subdirectories.
+
+    Each blob name is derived from the filename, not including the `directory`
+    parameter itself. For complete control of the blob name for each file (and
+    other aspects of individual blob metadata), use
+    transfer_manager.upload_many() instead.
+    """
 
 
+    from pathlib import Path
 
+    from google.cloud.storage import Client, transfer_manager
+    warnings.filterwarnings("ignore")
+    logger = get_run_logger()
+    storage_client = Client()
+    bucket = storage_client.bucket(bucket_name)
+
+    directory_as_path_obj = Path(source_directory)
+    paths = directory_as_path_obj.rglob("*")
+
+    file_paths = [path for path in paths if path.is_file()]
+
+    relative_paths = [path.relative_to(source_directory) for path in file_paths]
+    string_paths = [str(path) for path in relative_paths]
+
+    logger.info("Found {} files.".format(len(string_paths)))
+    results = transfer_manager.upload_many_from_filenames(
+        bucket, string_paths, source_directory=source_directory, max_workers=workers, skip_if_exists=True
+    )
+
+    for name, result in zip(string_paths, results):
+        if isinstance(result, Exception):
+            logger.info("Failed to upload {} due to exception: {}".format(name, result))
+
+@task
+def create_staging_tables():
+    for table in ['geral','complemento', 'ativo_passivo']:
+        logger = get_run_logger()
+        logger.info(f"Criando tabela {table}:")
+        create_bigquery_table(table_id=table)
+        logger.info(f"Tabela {table} criada!")
 
 
 @flow()
 def test():
+    logger = get_run_logger()
     links_and_dates = extract_links_and_dates(url= "https://dados.cvm.gov.br/dados/FII/DOC/INF_MENSAL/DADOS/")
     files = check_for_updates(df = links_and_dates)
-    path = download_unzip_csv(files = files)
-    make_partitions(path = path)
+    logger.info(f" tamanho --> {len(files)}")
+    if len(files) == 0:
+        logger.info("Não houveram atualizações, encerrando o flow")
+    else:
+        #path = download_unzip_csv(files = files)
+        #make_partitions(path = path)
+        #upload_directory_with_transfer_manager(bucket_name="brazilian-reits-bucket", source_directory="/tmp/data/")
+        create_staging_tables()
+
 if __name__ == "__main__":
     test()
