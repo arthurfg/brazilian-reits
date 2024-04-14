@@ -27,7 +27,12 @@ resource "google_storage_bucket" "demo-bucket" {
     }
   }
 }
-resource "google_bigquery_dataset" "demo_dataset" {
-  dataset_id = var.bq_dataset_name
+resource "google_bigquery_dataset" "staging_dataset" {
+  dataset_id = var.staging_dataset_name
+
+}
+
+resource "google_bigquery_dataset" "trusted_dataset" {
+  dataset_id = var.prod_dataset_name
 
 }

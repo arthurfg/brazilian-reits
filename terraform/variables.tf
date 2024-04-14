@@ -13,7 +13,12 @@ variable "location" {
   default     = "US"
 }
 
-variable "bq_dataset_name" {
+variable "staging_dataset_name" {
+  description = "My bq dataset name"
+  default     = "brazilian_reits_staging"
+}
+
+variable "prod_dataset_name" {
   description = "My bq dataset name"
   default     = "brazilian_reits"
 }
