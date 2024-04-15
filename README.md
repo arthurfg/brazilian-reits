@@ -1,6 +1,6 @@
 # Brazilian Real Estate Investment Funds (REIT's) Data Pipeline
 ## Problem
-The CVM (Comissão de Valores Mobiliarios)) website provides data on Real Estate Investment Funds on the [CVM Open Data Portal](https://dados.cvm.gov.br/dataset/fii-doc-inf_mensal) in monthly .csv tables compressed into .zip format. The dataset provides monthly reports for the last five years. The files will be updated weekly with any resubmissions. 
+The CVM (Comissão de Valores Mobiliarios) website provides data on Real Estate Investment Funds on the [CVM Open Data Portal](https://dados.cvm.gov.br/dataset/fii-doc-inf_mensal) in monthly .csv tables compressed into .zip format. The dataset provides monthly reports for the last five years. The files will be updated weekly with any resubmissions. 
 ## Objective
 This project establishes an end-to-end data pipeline utilizing Prefect, Google Cloud Storage (GCS), Google Cloud Run, BigQuery, and dbt. The pipeline extracts data from the CVM (Comissão de Valores Mobiliarios)) website regarding Real Estate Investment Funds (REITs) in Brazil.
 
