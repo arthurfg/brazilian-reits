@@ -1,8 +1,11 @@
 # Brazilian Real Estate Investment Funds (REIT's) Data Pipeline
-## Problem
-The CVM (Comissão de Valores Mobiliarios) website provides data on Real Estate Investment Funds on the [CVM Open Data Portal](https://dados.cvm.gov.br/dataset/fii-doc-inf_mensal) in monthly .csv tables compressed into .zip format. The dataset provides monthly reports for the last five years. The files will be updated weekly with any resubmissions. 
+
+### Challenge
+Although the Comissão de Valores Mobiliarios (CVM), the regulatory body responsible for the capital markets in Brazil, provides data on Real Estate Investment Trusts (FII/REITS) in a relatively organized structure on its [open data portal](https://dados.cvm.gov.br/dataset/fii-doc-inf_mensal), accessibility and speed in acquiring new data are still significant obstacles. The availability of tables in .csv format, compressed into .zip files, does not meet today's needs for interactivity and practicality. Tracking the net assets of a specific real estate fund over the months requires the user to manually download all the .zip files and proceed to read and merge all the .csv's for analysis, a process that proves to be inefficient and unfriendly.
+
+
 ## Objective
-This project establishes an end-to-end data pipeline utilizing Prefect, Google Cloud Storage (GCS), Google Cloud Run, BigQuery, and dbt. The pipeline extracts data from the CVM (Comissão de Valores Mobiliarios)) website regarding Real Estate Investment Funds (REITs) in Brazil.
+This project aims to overcome these barriers and, at the same time, achieve the last milestone (the final project) of DataTalksClub's Data Engineering course. The project establishes a complete data pipeline, which starts with the collection of the original data, transforms it into a more modern and open source format, stores the converted and partitioned data on an object storage platform in the cloud (along with the raw data in .csv) and, from these files, creates the tables needed for the final product: an interactive dashboard that offers access to detailed information about one or more REITs, providing an agile and intuitive user experience.
 
 ## Overview
 
