@@ -30,6 +30,10 @@ The primary objective of this project is to automate the extraction, transformat
    
 3. **Data Loading**: Processed data is loaded into BigQuery tables, organized in a schema suitable for analysis. dbt may be employed here to further refine the data model and create derived datasets.
    
-4. **Dashboard Creation**: Finally, the transformed data is utilized to create interactive dashboards for visualizing key insights and performance metrics of REITs in Brazil. Tools like Data Studio or Looker can be integrated for dashboard creation.
+4. **Dashboard Creation**: Finally, the transformed data is utilized to create interactive dashboards for visualizing key insights and performance metrics of REITs in Brazil. 
+
+## Dashboard
+
+<iframe width="600" height="534" src="https://lookerstudio.google.com/embed/reporting/b97f7247-c3de-4927-b021-a3fe74d671d2/page/1M" frameborder="0" style="border:0" allowfullscreen sandbox="allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"></iframe>
 
 
