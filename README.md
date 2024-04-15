@@ -7,6 +7,7 @@ This project establishes an end-to-end data pipeline utilizing Prefect, Google C
 ## Overview
 
 The primary objective of this project is to automate the extraction, transformation, and loading (ETL) process of REIT data from the CVM database into a structured format for further analysis and visualization.
+In short, the deployment was registered to run every day at 4pm (America/Chicago time). The flow checks whether there have been any updates to the available data and, if so, the files are downloaded, decompressed, transformed into parquet, uploaded to the GCS (both the parquet data and the raw data) and, from the bucket, the staging tables are created.
 
 ## Infrastructure
 
