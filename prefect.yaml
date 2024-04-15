@@ -34,30 +34,6 @@ pull:
 
 # the deployments section allows you to provide configuration for deploying flows
 deployments:
-- name: heathcheck-deploy
-  version:
-  tags: []
-  description:
-  entrypoint: flows/flow-1/healthcheck.py:healthcheck
-  parameters: {}
-  work_pool:
-    name: cloud-run-wp
-    work_queue_name: default
-    job_variables:
-      image: '{{ build_image.image }}'
-  schedules: []
-- name: trigger-dbt-deploy
-  version:
-  tags: []
-  description:
-  entrypoint: flows/trigger-dbt/trigger_dbt_flow.py:trigger_dbt_flow
-  parameters: {}
-  work_pool:
-    name: cloud-run-wp
-    work_queue_name: default
-    job_variables:
-      image: '{{ build_image.image }}'
-  schedules: []  
 - name: brazilian-reits-deploy
   version:
   tags: []
@@ -69,4 +45,7 @@ deployments:
     work_queue_name: default
     job_variables:
       image: '{{ build_image.image }}'
-  schedules: [] 
+  schedules:
+    - cron: "00 16 * * 1-5"
+      timezone: "America/Chicago"
+      active: false
