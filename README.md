@@ -33,7 +33,5 @@ The primary objective of this project is to automate the extraction, transformat
 4. **Dashboard Creation**: Finally, the transformed data is utilized to create interactive dashboards for visualizing key insights and performance metrics of REITs in Brazil. 
 
 ## Dashboard
-
-<iframe width="600" height="534" src="https://lookerstudio.google.com/embed/reporting/b97f7247-c3de-4927-b021-a3fe74d671d2/page/1M" frameborder="0" style="border:0" allowfullscreen sandbox="allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"></iframe>
-
-
+https://lookerstudio.google.com/embed/reporting/b97f7247-c3de-4927-b021-a3fe74d671d2/page/1M
+<img width="908" alt="Captura de Tela 2024-04-14 às 23 36 39" src="https://github.com/arthurfg/brazilian-reits/assets/62671380/c51596eb-4dcc-4fb3-869b-6f62f1640073">
