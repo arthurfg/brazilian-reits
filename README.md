@@ -11,6 +11,10 @@ In short, the deployment was registered to run every day at 4pm (America/Chicago
 
 ## Infrastructure
 
+### Diagram
+![diagram-export-15-04-2024-01_41_03](https://github.com/arthurfg/brazilian-reits/assets/62671380/a55959f1-b3f6-4349-a43a-4b08e355afb3)
+
+
 1. **Prefect**: Orchestrationn
    
 2. **Google Cloud Storage (GCS)**: Data Lake
