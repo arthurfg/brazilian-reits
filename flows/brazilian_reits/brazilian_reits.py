@@ -12,7 +12,8 @@ import pyarrow.parquet as pq
 import warnings
 from prefect_dbt.cli.commands import DbtCoreOperation
 from google.cloud import bigquery
-
+from pathlib import Path
+from google.cloud.storage import Client, transfer_manager
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "./dbt-service-account.json"
 
 def create_bigquery_table(table_id, overwrite=True) -> None:
@@ -93,7 +94,7 @@ def check_for_updates(df):
     Checks for outdated tables.
     """
     
-    return df.query("desatualizado == False").arquivo.to_list()       
+    return df.query("desatualizado == False").arquivo.to_list()             
 
 @task  # noqa
 def download_unzip_csv(
@@ -195,10 +196,6 @@ def upload_directory_with_transfer_manager(bucket_name, source_directory, worker
     transfer_manager.upload_many() instead.
     """
 
-
-    from pathlib import Path
-
-    from google.cloud.storage import Client, transfer_manager
     warnings.filterwarnings("ignore")
     logger = get_run_logger()
     storage_client = Client()
