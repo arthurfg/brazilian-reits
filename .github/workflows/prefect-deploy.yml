@@ -1,9 +1,9 @@
 name: Build an Image and Deploy a Prefect flow
 on:
   workflow_dispatch:
-  # push:
-  #   branches:
-  #     - main
+  push:
+    branches:
+      - main
 
 jobs:
   deploy_flow:
