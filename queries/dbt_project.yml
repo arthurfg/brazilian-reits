@@ -11,7 +11,7 @@ seed-paths: ["seeds"]
 macro-paths: ["macros"]
 snapshot-paths: ["snapshots"]
 
-clean-targets:       
+clean-targets:
   - "target"
   - "dbt_packages"
 
@@ -21,4 +21,3 @@ models:
   queries:
     brazilian_reits:
       +materialized: table
-      +schema: brazilian_reits
