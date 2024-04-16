@@ -56,7 +56,7 @@ The tools used to carry out the project were these:
    
 5. **dbt (data build tool)**: Transformation/Batch processing
 
-6. **CI/CD**: GH Actions
+6. **GH Actions**: CI/CD
 
 7. **IAC**: Terraform
    
