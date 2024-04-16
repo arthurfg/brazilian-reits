@@ -91,7 +91,7 @@ Specifically, this action performs the following tasks:
 
 This automation ensures that the `brazilian-reits-flow` is always available and operational, minimizing the risk of human error and speeding up the deployment process, which is crucial for an agile and reliable operation.
 ### Diagram
-![diagram-export-15-04-2024-01_41_03](https://github.com/arthurfg/brazilian-reits/assets/62671380/a55959f1-b3f6-4349-a43a-4b08e355afb3)
+![diagram-export-16-04-2024-19_20_38](https://github.com/arthurfg/brazilian-reits/assets/62671380/c0e53943-8756-4ae9-9ebf-a681d6f8e1e8)
 
 ## Workflow
 
