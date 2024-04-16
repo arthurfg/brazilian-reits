@@ -1,4 +1,4 @@
-# Brazilian Real Estate Investment Funds (REIT's) Data Pipeline
+# Brazilian Real Estate Investment Trusts (REIT's) Data Pipeline
 
 ### Challenge
 Although the Comissão de Valores Mobiliarios (CVM), the regulatory body responsible for the capital markets in Brazil, provides data on Real Estate Investment Trusts (FII/REITS) in a relatively organized structure on its [open data portal](https://dados.cvm.gov.br/dataset/fii-doc-inf_mensal), accessibility and speed in acquiring new data are still significant obstacles. The availability of tables in .csv format, compressed into .zip files, does not meet today's needs for interactivity and practicality. Tracking the net assets of a specific real estate fund over the months requires the user to manually download all the .zip files and proceed to read and merge all the .csv's for analysis, a process that proves to be inefficient and unfriendly.
