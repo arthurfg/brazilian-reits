@@ -110,7 +110,7 @@ Google BigQuery
 
 3. **Data Transformation**: Dbt is used to query staging tables and make processing and cleaning tasks using containerized applications hosted on Google Cloud Run, creatind the _trusted_ tables in `brazilia_reits` dataset.
 
- - Trusted dataset and tables:
+ - Trusted dataset, partitionated and clustered tables:
 ```bash
 Google BigQuery
 ├── brazilian_reits
