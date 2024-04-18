@@ -126,3 +126,50 @@ Google BigQuery
 ### [**Link**](https://lookerstudio.google.com/embed/reporting/b97f7247-c3de-4927-b021-a3fe74d671d2/page/1M)
 ![Captura de Tela 2024-04-15 às 13 28 42](https://github.com/arthurfg/brazilian-reits/assets/62671380/75b8edfa-edeb-4649-af31-da2a124b2319)
 
+
+# Running the pipeline
+Make shure you have these requirements on your local machine:
+- Terraform
+- Docker
+- Google Cloud SDK
+- GCP service account for terraform development
+- GCP service account for dbt|storage|bigquery
+  
+### Steps
+1. Clone this repository
+```bash
+git clone https://github.com/arthurfg/brazilian-reits.git
+```
+
+2. Go to the repo
+```bash
+cd </path/to/repo>
+```
+
+3. Copy the .env.example file to a new file named .env:
+```bash
+cp .env.example .env
+```
+Replace the values of the variables with their respective values and load the environment variables from the .env file:
+```bash
+source .env
+```
+
+4. Go to terraform directory
+```bash
+cd terraform
+```
+
+5. Run the terraform commands
+```bash
+terraform plan
+```
+```bash
+terraform apply
+```
+
+6. Create a `./dbt-service-account.json` file and paste your dbt|storage|bigquery service account content (sorry for this):
+```bash
+cd ..
+touch dbt-service-account.json
+
