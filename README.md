@@ -90,6 +90,13 @@ Specifically, this action performs the following tasks:
 3. **Upload to Google Artifact Registry:** The Docker image, now containing the updated flow, is automatically uploaded to the Google Artifact Registry, an artifact management system for developers and teams using Google Cloud Platform.
 
 This automation ensures that the `brazilian-reits-flow` is always available and operational, minimizing the risk of human error and speeding up the deployment process, which is crucial for an agile and reliable operation.
+
+### Deployment on prefect cloud: 
+<img width="400" alt="Captura de Tela 2024-04-18 às 12 15 18" src="https://github.com/arthurfg/brazilian-reits/assets/62671380/be106987-dcb2-43d5-907b-cd6af0d2d62f"> 
+
+<img width="450" alt="Captura de Tela 2024-04-18 às 12 14 34" src="https://github.com/arthurfg/brazilian-reits/assets/62671380/35d1a572-5129-405c-874c-b1cf24e2f08b">
+
+
 ### Diagram
 ![diagram-export-16-04-2024-19_20_38](https://github.com/arthurfg/brazilian-reits/assets/62671380/c0e53943-8756-4ae9-9ebf-a681d6f8e1e8)
 
