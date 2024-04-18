@@ -136,12 +136,12 @@ Make shure you have these requirements on your local machine:
 - GCP service account for dbt|storage|bigquery
   
 ### Steps
-1. Clone this repository
+1. Clone this repository:
 ```bash
 git clone https://github.com/arthurfg/brazilian-reits.git
 ```
 
-2. Go to the repo
+2. Go to the repo:
 ```bash
 cd </path/to/repo>
 ```
@@ -155,12 +155,12 @@ Replace the values of the variables with their respective values and load the en
 source .env
 ```
 
-4. Go to terraform directory
+4. Go to terraform directory:
 ```bash
 cd terraform
 ```
 
-5. Run the terraform commands
+5. Run the terraform commands:
 ```bash
 terraform plan
 ```
@@ -172,4 +172,9 @@ terraform apply
 ```bash
 cd ..
 touch dbt-service-account.json
+```
 
+7. Build the Docker image:
+```bash
+docker build -t brazilian-reits-image .
+```
