@@ -1,11 +1,9 @@
 variable "credentials" {
   description = "My credentials"
-  default     = "/Users/apple/Documents/data-engineering-course/week_1_basics_n_setup/terraform/keys/my-creds.json"
 }
 
-variable "project" {
-  description = "Project"
-  default     = "arthur-data-engineering-course"
+variable "project_id" {
+  description = "GCP Project"
 }
 
 variable "location" {
