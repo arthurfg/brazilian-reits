@@ -130,7 +130,7 @@ Google BigQuery
 # Running the pipeline
 Make shure you have these requirements on your local machine:
 - Terraform
-- Docker
+- Docker Desktop
 - Google Cloud SDK
 - GCP service account for terraform development
 - GCP service account for dbt|storage|bigquery
@@ -177,4 +177,9 @@ touch dbt-service-account.json
 7. Build the Docker image:
 ```bash
 docker build -t brazilian-reits-image .
+```
+
+8. Run the Docker image:
+```bash
+docker run brazilian-reits-image
 ```
