@@ -190,3 +190,4 @@ docker build -f Dockerfile.dev -t brazilian-reits-image .
 ```bash
 docker run brazilian-reits-image
 ```
+
