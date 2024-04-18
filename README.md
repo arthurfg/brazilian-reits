@@ -46,7 +46,7 @@ In short, the deployment was registered to run every day at 4pm (America/Chicago
 
 The tools used to carry out the project were these:
 
-1. **Prefect**: Orchestrationn
+1. **Prefect**: Orchestration
    
 2. **Google Cloud Storage (GCS)**: Data Lake
    
@@ -58,7 +58,7 @@ The tools used to carry out the project were these:
 
 6. **GH Actions**: CI/CD
 
-7. **IAC**: Terraform
+7. **Terraform**: IAC
    
 8. **Looker Studio**: Dashboard
 
@@ -176,7 +176,7 @@ touch dbt-service-account.json
 
 7. Build the Docker image:
 ```bash
-docker build -t brazilian-reits-image .
+docker build -f Dockerfile.dev -t brazilian-reits-image .
 ```
 
 8. Run the Docker image:
